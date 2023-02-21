@@ -1,0 +1,61 @@
+﻿@model DTO.DTOEntity.BiletDTO
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_WebLayout.cshtml";
+}
+
+<section class="w3l-call-to-action_9">
+    <div class="call-w3 ">
+        <div class="container-fluid">
+            <div class="grids">
+                <div class="grids-content row text-center">
+
+                    <div class="column display-column col-lg-6 col-md-6 col-sm-6">
+                        <div class="column-five ">
+                            <h3><a href="about.html" class=" ">@Model.Name</a></h3>
+                            <span class="para">
+                                Uçuş tarixi: @(((DateTime)Model.FlyDate).ToString("dd-MMM-yyyy"))
+                                saat: @(((DateTime)Model.FlyTime).ToString("hh:mm tt"))
+                            </span>
+                            <br>
+                            <span class="para">
+                                Eniş tarixi: @(((DateTime)Model.DownDate).ToString("dd-MMM-yyyy"))
+                                saat: @(((DateTime)Model.DownTime).ToString("hh:mm tt"))
+                            </span>
+                            <br>
+                            <span class="para">Toplam mesafe: @Model.Km</span>
+                            <br />
+                            <span class="para">Bilet Qiyməti: @Model.Price azn</span>
+                            <br>
+                            @if (User.IsInRole("User"))
+                            {
+                                <form method="post" asp-controller="Bilet" asp-action="AddToCart">
+
+                                    <div class="form-outline mb-4">
+                                        <label>Say:  </label>
+                                        <input type="number" style="width:100px" value="1" name="Count" min="1" max="10" class="form-control form-control" />
+                                    </div>
+
+                                    <button type="submit" class="btn btn-outline-success">
+                                        <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                                        Şifariş edin
+                                    </button>
+
+                                    <div class="form-outline mb-4">
+                                        <input type="hidden" name="BiletId" value="@Model.Id" class="form-control form-control" />
+                                    </div>
+
+                                </form>
+                            }
+                        </div>
+
+                    </div>
+                    <div class="column col-lg-6 col-md-6 col-sm-6 back-three  p-0">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+

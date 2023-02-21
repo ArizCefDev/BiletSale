@@ -1,0 +1,100 @@
+﻿@model IEnumerable<DTO.DTOEntity.CartDTO>
+
+@{
+    ViewData["Title"] = "GetCart";
+    Layout = "~/Views/Shared/_WebLayout.cshtml";
+}
+
+
+<section class="w3l-recent-work-hobbies">
+    <div class="recent-work ">
+        <div class="container">
+            <partial name="~/Views/Shared/Message.cshtml" />
+            @{
+                if (Model.Count() == 0)
+                {
+                            <div class="justify-content-center">
+                                <p class="h2">Səbətiniz boşdur!</p>
+                    </div>
+                }
+            }
+            <div class="main-titles-head text-center">
+                <h3 class="header-name ">
+                    Sİfarİş edİlən bİletlər
+                </h3>
+            </div>
+            @{
+                int cartall = ViewBag.CartCount;
+
+                if (cartall>0)
+                {
+                    <form method="post" asp-controller="Home" asp-action="AllBuy">
+                        @*<input type="hidden" value="@item.Sum" name="Sum">
+                <input type="hidden" value="@item.Id" name="CartId">*@
+                        <button type="submit" style="width:300px;" class="btn btn-outline-success">
+                            <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                            Hamısını Al
+                        </button>
+                    </form>
+                    <br />
+                }
+            }
+           
+@*            <div class="row justify-content-md-center mt-3">
+                <div class="col col-md-auto">
+                    <ul class="list-group bg-white list-group-horizontal">
+                        <li class="list-group-item list-group-item-secondary">
+                            <a class="text-decoration-none" asp-action="GetCart" asp-route-order="@ViewBag.NameSort" asp-route-search="@ViewBag.Search">Ada görə</a>
+                        </li>
+                        <li class="list-group-item list-group-item-secondary">
+                            <a class="text-decoration-none" asp-action="GetCart" asp-route-order="@ViewBag.PriceSort" asp-route-search="@ViewBag.Search">Qiymətə görə</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <br />
+            <br />*@
+            <div class="row about-about">
+                @foreach (var item in Model)
+                {
+                    <div class="col-lg-6 col-md-6 col-sm-6 " style="margin-bottom: 20px;">
+                        <div class="about-grids">
+                            <h4>
+                                <a asp-controller="Home" asp-action="Details" asp-route-id="@item.Id" id="head_tl">@item.BiletName</a>
+                            </h4>
+                            <span class="para">
+                                Uçuş tarixi: @(((DateTime)item.FlyDateName).ToString("dd-MMM-yyyy"))
+                                saat: @(((DateTime)item.FlyTimeName).ToString("hh:mm tt"))
+                            </span>
+                            <br>
+                            <span class="para">
+                                Eniş tarixi: @(((DateTime)item.DownDateName).ToString("dd-MMM-yyyy"))
+                                saat: @(((DateTime)item.DownTimeName).ToString("hh:mm tt"))
+                            </span>
+                            <p class="para">Toplam mesafe: @item.BiletKm km</p>
+                            <p class="para">Bilet Qiyməti: @item.BiletPrice azn</p>
+
+                            <form method="post" asp-controller="Home" asp-action="Buy">
+                                <input type="hidden" value="@item.Sum" name="Sum">
+                                <input type="hidden" value="@item.Id" name="CartId">
+                                <button type="submit" style="width:300px;" class="btn btn-outline-success">
+                                    <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                                    Al
+                                </button>
+                            </form>
+                            <br />
+                            <form method="post" asp-controller="Home" asp-action="DeleteFromCart">
+                                <input type="hidden" name="cartId" value="@item.Id">
+                                <button type="submit" style="width:300px;" class="btn btn-outline-danger">
+                                    <i class="fa fa-trash" aria-hidden="true"></i>
+                                    Sil
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+
+</section>

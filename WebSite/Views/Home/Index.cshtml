@@ -1,0 +1,111 @@
+﻿@using DTO.DTOEntity
+@model PagedResponseDTO<BiletDTO>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_WebLayout.cshtml";
+}
+
+<!-- disable body scroll which navbar is in active -->
+<section class="w3l-hero-headers-9">
+    <div class="slide header11" data-selector="header11">
+        <div class="container">
+        </div>
+    </div>
+</section>
+
+<script src="~/WebSale/assets/js/jquery-3.3.1.min.js"></script>
+<!-- Common jquery plugin -->
+<!--bootstrap working-->
+<script src="~/WebSale/assets/js/bootstrap.min.js"></script>
+<!-- //bootstrap working-->
+<!-- disable body scroll which navbar is in active -->
+<script>
+    $(function () {
+        $('.navbar-toggler').click(function () {
+            $('body').toggleClass('noscroll');
+        })
+    });
+</script>
+
+
+<section class="w3l-recent-work-hobbies">
+    <div class="recent-work ">
+        <div class="container">
+            <div class="main-titles-head text-center">
+                <h3 class="header-name ">
+                    Satışda olan bİletlər
+                </h3>
+                <p>Toplam aktiv satışda olan bilet sayı: @ViewBag.BiletCount</p>
+            </div>
+            <div class="row justify-content-md-center mt-3">
+                <div class="col col-md-auto">
+                    <ul class="list-group bg-white list-group-horizontal">
+                        <li class="list-group-item list-group-item-secondary">
+                            <a class="text-decoration-none" asp-action="Index" asp-route-order="@ViewBag.NameSort" asp-route-search="@ViewBag.Search">Ada görə</a>
+                        </li>
+                        <li class="list-group-item list-group-item-secondary">
+                            <a class="text-decoration-none" asp-action="Index" asp-route-order="@ViewBag.PriceSort" asp-route-search="@ViewBag.Search">Qiymətə görə</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <br />
+            <br />
+            <div class="row about-about">
+                @foreach (var item in Model.Values)
+                {
+                    <div class="col-lg-6 col-md-6 col-sm-6 " style="margin-bottom: 20px;">
+                        <div class="about-grids">
+                            <h4>
+                                <a asp-controller="Home" asp-action="Details" asp-route-id="@item.Id" id="head_tl">@item.Name</a>
+                            </h4>
+                            <span class="para">
+                                Uçuş tarixi: @(((DateTime)item.FlyDate).ToString("dd-MMM-yyyy"))
+                                saat: @(((DateTime)item.FlyTime).ToString("hh:mm tt"))
+                            </span>
+                            <br>
+                            <span class="para">
+                                Eniş tarixi: @(((DateTime)item.DownDate).ToString("dd-MMM-yyyy"))
+                                saat: @(((DateTime)item.DownTime).ToString("hh:mm tt"))
+                            </span>
+                            <p class="para">Toplam mesafe: @item.Km km</p>
+                            <p class="para">Bilet Qiyməti: @item.Price azn</p>
+                            <br>
+                            <a asp-controller="Home" asp-action="Details" asp-route-id="@item.Id"
+                           class="btn btn-primary">Şifariş edin</a>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+        <div class="row justify-content-md-center">
+
+            <ul class="pagination justify-content-center">
+                @if (ViewBag.HasPrevious)
+                {
+                    <li class="page-item">
+                        <a class="page-link" asp-action="Index" asp-route-page="@(Model.Page-1)"
+                       asp-route-order="@ViewBag.PriceSort" asp-route-search="@ViewBag.Search">Previous</a>
+                    </li>
+                }
+                else
+                {
+                    <li class="page-item disabled"><a class="page-link">Previous</a></li>
+                }
+                @if (ViewBag.HasNext)
+                {
+                    <li class="page-item">
+                        <a class="page-link" asp-action="Index" asp-route-page="@(Model.Page+1)"
+                       asp-route-order="@ViewBag.PriceSort" asp-route-search="@ViewBag.Search">Next</a>
+                    </li>
+                }
+                else
+                {
+                    <li class="page-item disabled"><a class="page-link">Next</a></li>
+                }
+            </ul>
+        </div>
+    </div>
+
+</section>

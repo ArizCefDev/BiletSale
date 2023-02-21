@@ -1,0 +1,93 @@
+﻿@using Helper.Constants
+@using System.Globalization
+@{
+    var isAuth = Context.User.Identity.IsAuthenticated;
+    var isAdmin = Context.User.IsInRole(RoleKeywords.AdminRole);
+}
+<!-- /Topmenu-4 block -->
+<section class=" w3l-header-4 header-sticky">
+    <header class="absolute-top">
+        <div class="container">
+            <div class="nav-three-columns">
+                <nav class="nav-logo">
+                    <h1>
+                        <a class="navbar-brand" style="display:@((isAdmin)? "none" : "block")">
+                            @CultureInfo.CurrentCulture.TextInfo.ToTitleCase(Context?.User?.FindFirst(x=>x.Type=="UserName")?.Value ?? "").ToLower()
+                        </a>
+                    </h1>
+                </nav>
+
+                <div class="nav-mid navbar-mid">
+                    <ul>
+                        @if (User.IsInRole("User"))
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link" asp-controller="Home" asp-action="GetCart">Sifarişlər</a>
+                            </li>
+                        }
+                        @if (User.IsInRole("Admin"))
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link" asp-controller="Admin" asp-action="AdminIndex">Admin</a>
+                            </li>
+                        }
+                        <li class="nav-item">
+                            <a class="nav-link" asp-controller="Home" asp-action="Index">Ana Səhifə</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-controller="About" asp-action="Index">Haqqımızda</a>
+                        </li>
+                        <li class="nav-item ">
+                            <a class="nav-link" asp-controller="Login" asp-action="SignUp">Qediyyat</a>
+                        </li>
+                        <li class="nav-item ">
+                            <a class="nav-link" asp-controller="Login" asp-action="SignIn">Daxil ol</a>
+                        </li>
+                        <li class="nav-item ">
+                            <a class="nav-link" asp-controller="Login" asp-action="LogOut">Çıxış</a>
+                        </li>
+                        
+                    </ul>
+                </div>
+                <!--overlay-menu-->
+                <div class="fullwidth-overlay-menu">
+                    <input type="checkbox" id="view"></input>
+                    <div class="top-menu4-icon">
+                        <label for="view" class="topmenu4-expand">
+                            <div class="hamburger2">
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                            </div>
+                        </label>
+                    </div>
+                    <div class="expanded-menu expanded-menu-effect">
+                        <label for="view" class="close" title="Close">&times;</label>
+                        <nav class="menu-side-over-left">
+                            <ul>
+                                @if (User.IsInRole("User"))
+                                {
+                                    <li><a asp-controller="Home" asp-action="GetCart">Sifarişlər</a></li>
+
+                                }
+                                @if (User.IsInRole("Admin"))
+                                {
+                                    <li><a asp-controller="Home" asp-action="Index">Admin</a></li>
+
+                                }
+                                <li><a asp-controller="Home" asp-action="Index">Ana Səhifə</a></li>
+                                <li><a asp-controller="About" asp-action="Index">Haqqımızda</a></li>
+                                <li><a asp-controller="Login" asp-action="SignUp">Qediyyat</a></li>
+                                <li><a asp-controller="Login" asp-action="SignIn">Daxil ol</a></li>
+                                <li><a asp-controller="Login" asp-action="LogOut">Çıxış</a></li>
+                                
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+                <!--/overlay-menu-->
+            </div>
+        </div>
+    </header>
+</section>
+
