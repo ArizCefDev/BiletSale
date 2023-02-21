@@ -1,0 +1,88 @@
+﻿@model DTO.DTOEntity.BiletDTO
+
+@{
+    ViewData["Title"] = "AdminBiletUpdate";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<section id="main-content">
+    <section class="wrapper">
+        <div class="form-w3layouts">
+            <!-- page start-->
+            <div class="row">
+                <div class="col-lg-12">
+                    <section class="panel">
+                        <header class="panel-heading">
+                            Bilet Redaktə et
+                            <span class="tools pull-right">
+                                <a class="fa fa-chevron-down" href="javascript:;"></a>
+                                <a class="fa fa-cog" href="javascript:;"></a>
+                                <a class="fa fa-times" href="javascript:;"></a>
+                            </span>
+                        </header>
+                        <div class="panel-body">
+                            <div class="form">
+                                <form class="cmxform form-horizontal " id="signupForm" method="post" novalidate="novalidate">
+                                    <div class="form-group ">
+                                        <label for="firstname" class="control-label col-lg-3">Təyinat</label>
+                                        <div class="col-lg-6">
+                                            <input asp-for="Name" class=" form-control" id="firstname" type="text">
+                                        </div>
+                                    </div>
+                                    <div class="form-group ">
+                                        <label for="lastname" class="control-label col-lg-3">Uçuş tarixi</label>
+                                        <div class="col-lg-6">
+                                            <input asp-for="FlyDate" class=" form-control" id="lastname" type="date">
+                                        </div>
+                                    </div>
+                                    <div class="form-group ">
+                                        <label for="lastname" class="control-label col-lg-3">Uçuş saatı</label>
+                                        <div class="col-lg-6">
+                                            <input asp-for="FlyTime" class=" form-control" id="lastname" type="time">
+                                        </div>
+                                    </div>
+                                    <div class="form-group ">
+                                        <label for="lastname" class="control-label col-lg-3">Eniş tarixi</label>
+                                        <div class="col-lg-6">
+                                            <input asp-for="DownDate" class=" form-control" id="lastname" type="date">
+                                        </div>
+                                    </div>
+                                    <div class="form-group ">
+                                        <label for="lastname" class="control-label col-lg-3">Eniş saatı</label>
+                                        <div class="col-lg-6">
+                                            <input asp-for="DownTime" class=" form-control" id="lastname" type="time">
+                                        </div>
+                                    </div>
+                                    <div class="form-group ">
+                                        <label for="username" class="control-label col-lg-3">Məsafə</label>
+                                        <div class="col-lg-6">
+                                            <input asp-for="Km" class="form-control " id="username" type="text">
+                                        </div>
+                                    </div>
+                                    <div class="form-group ">
+                                        <label for="password" class="control-label col-lg-3">Qiymət</label>
+                                        <div class="col-lg-6">
+                                            <input asp-for="Price" class="form-control " id="password" type="text">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="col-lg-offset-3 col-lg-6">
+                                            <button class="btn btn-success" type="submit">Redaktə et</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+            <!-- page end-->
+        </div>
+    </section>
+    <!-- footer -->
+    <div class="footer">
+        <div class="wthree-copyright">
+        </div>
+    </div>
+    <!-- / footer -->
+</section>

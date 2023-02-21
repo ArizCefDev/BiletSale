@@ -1,0 +1,56 @@
+﻿@model IEnumerable<DTO.DTOEntity.BiletDTO>
+@{
+    ViewData["Title"] = "AdminIndex";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<section id="main-content">
+    <section class="wrapper">
+        <div class="table-agile-info">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    Biletlər Cədvəli
+                </div>
+                <div>
+                    <a asp-controller="Admin" asp-action="AdminBiletAdd" class="btn btn-primary">Yeni</a>
+                    <table class="table" ui-jq="footable" ui-options='{"paging": {"enabled": true},"filtering": {"enabled": true},"sorting": {"enabled": true}}'>
+                        <thead>
+                            <tr>
+                                <th data-breakpoints="xs">ID</th>
+                                <th>Təyinat</th>
+                                <th>Uçuş</th>
+                                <th>Eniş</th>
+                                <th>Məsafə</th>
+                                <th>Qiymət</th> 
+                                <th>Sil</th> 
+                                <th>Redaktə</th> 
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr data-expanded="true">
+                                    <td>@item.Id</td>
+                                    <td>@item.Name</td>
+                                    <td>@(((DateTime)item.FlyDate).ToString("dd-MMM-yyyy"))</td>
+                                    <td>@(((DateTime)item.DownDate).ToString("dd-MMM-yyyy"))</td>
+                                    <td>@item.Km</td>
+                                    <td>@item.Price azn</td>
+                                    <td><a asp-controller="Admin" asp-action="AdminBiletDelete" asp-route-id="@item.Id" class="btn btn-danger">Sil</a></td>
+                                    <td><a asp-controller="Admin" asp-action="AdminBiletUpdate" asp-route-id="@item.Id" class="btn btn-success">Redaktə</a></td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- footer -->
+    <div class="footer">
+        <div class="wthree-copyright">
+        </div>
+    </div>
+    <!-- / footer -->
+</section>
+
