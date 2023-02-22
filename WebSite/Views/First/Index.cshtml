@@ -1,0 +1,44 @@
+﻿@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_WebLayout.cshtml";
+}
+
+<!-- disable body scroll which navbar is in active -->
+<section class="w3l-hero-headers-9">
+    <div class="slide header11" data-selector="header11">
+        <div class="container">
+        </div>
+    </div>
+</section>
+
+<script src="~/WebSale/assets/js/jquery-3.3.1.min.js"></script>
+<!-- Common jquery plugin -->
+<!--bootstrap working-->
+<script src="~/WebSale/assets/js/bootstrap.min.js"></script>
+<!-- //bootstrap working-->
+<!-- disable body scroll which navbar is in active -->
+<script>
+    $(function () {
+        $('.navbar-toggler').click(function () {
+            $('body').toggleClass('noscroll');
+        })
+    });
+</script>
+
+
+<section class="w3l-recent-work-hobbies">
+    <div class="recent-work ">
+        <div class="container">
+            <div class="main-titles-head text-center">
+                <h3 class="header-name ">
+                    BİLETLƏR SƏHİFƏSİNƏ GEDİN
+                </h3>
+                <p><a asp-controller="Home" asp-action="Index"
+                 class="btn btn-primary">Hamısını Gör</a></p>
+            </div>
+        </div>
+    </div>
+
+</section>
+<partial name="~/Views/Partials/FooterHomePartial.cshtml" />
+
