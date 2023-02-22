@@ -22,6 +22,7 @@
                 <h3 class="header-name ">
                     Sİfarİş edİlən bİletlər
                 </h3>
+                <p>Toplam sifarış edilən bilet sayı: @ViewBag.CartCount</p>
             </div>
             @{
                 int cartall = ViewBag.CartCount;
@@ -40,20 +41,6 @@
                 }
             }
            
-@*            <div class="row justify-content-md-center mt-3">
-                <div class="col col-md-auto">
-                    <ul class="list-group bg-white list-group-horizontal">
-                        <li class="list-group-item list-group-item-secondary">
-                            <a class="text-decoration-none" asp-action="GetCart" asp-route-order="@ViewBag.NameSort" asp-route-search="@ViewBag.Search">Ada görə</a>
-                        </li>
-                        <li class="list-group-item list-group-item-secondary">
-                            <a class="text-decoration-none" asp-action="GetCart" asp-route-order="@ViewBag.PriceSort" asp-route-search="@ViewBag.Search">Qiymətə görə</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            <br />
-            <br />*@
             <div class="row about-about">
                 @foreach (var item in Model)
                 {

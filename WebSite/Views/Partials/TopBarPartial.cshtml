@@ -1,0 +1,66 @@
+﻿<!-- Topmenu-4 block -->
+<section class="w3l-top-menu-4">
+    <header class="top-menu4">
+        <div class="container">
+
+            <div class="d-grid grid-header">
+                <div class="address ">
+                    <ul>
+                        <li>
+                            <h6 class="address-txt">Address</h6>
+                        </li>
+                        <li>
+                            <p class="para">Bakı şəhəri Azərbaycan</p>
+                        </li>
+                    </ul>
+                </div>
+                <div class="address">
+                    <ul>
+                        <li>
+                            <h6 class="address-txt">Email</h6>
+                        </li>
+                        <li> <a href="mailto:mail@estate.com">websale@gmail.com</a> </li>
+
+                    </ul>
+                </div>
+                <div class="address">
+                    <ul>
+                        <li>
+                            <h6 class="address-txt">Telefon</h6>
+                        </li>
+                        <li><a href="tel:+404 11-22-89">+(994)-055 241 51 84</a></li>
+                    </ul>
+                </div>
+                <div class="top-menu4-left d-grid align-items-menu4">
+
+                    <div class="nav-item" title="Axtar">
+                        <a href="#search" class="btn search-search">
+                            <span class="fa fa-search mr-2" aria-hidden="true"></span>Bilet axtar
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <!-- search popup -->
+            <div id="search" class="pop-overlay">
+                <div class="popup">
+                    <h3>
+                        İstədiyiniz Avia Bileti Burdan Axtarın
+                    </h3>
+                    <form asp-controller="Home" asp-action="Index"  method="post">
+                        <div class="search-below book-form">
+                            <div class="form-right-to-w3ls">
+                                <input type="text" name="search" value="@ViewBag.Search" placeholder="Reysin adın daxil edin" class="form-control" style="width:600px;" />     
+                            </div>
+                            <div class="search-container txt-center">
+                                <input type="submit" value="Axtar">
+                            </div>
+                        </div>
+                        <a class="close" href="#">×</a>
+                    </form>
+                </div>
+            </div>
+            <!-- /search popup -->
+        </div>
+    </header>
+</section>
+<!-- /Topmenu-4 block -->

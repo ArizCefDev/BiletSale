@@ -1,4 +1,5 @@
-﻿using Business.Abstract;
+﻿using Business;
+using Business.Abstract;
 using DTO.DTOEntity;
 using Helper.Constants;
 using Microsoft.AspNetCore.Authorization;
@@ -32,8 +33,22 @@ namespace WebSite.Controllers
         [HttpPost]
         public IActionResult AdminBiletAdd(BiletDTO p)
         {
-            _biletService.Create(p);
-            return RedirectToAction("AdminIndex");
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    _biletService.Create(p);
+                    return RedirectToAction("AdminIndex");
+                }
+                else
+                    return View(p);
+            }
+            catch (Exception ex)
+            {
+                ViewBag.Error = ex.Message;
+                return View();
+            }
+            
         }
 
         [HttpGet]
@@ -46,8 +61,21 @@ namespace WebSite.Controllers
         [HttpPost]
         public IActionResult AdminBiletUpdate(BiletDTO p)
         {
-            _biletService.Update(p);
-            return RedirectToAction("AdminIndex");
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    _biletService.Update(p);
+                    return RedirectToAction("AdminIndex");
+                }
+                else
+                    return View(p);
+            }
+            catch (Exception ex)
+            {
+                ViewBag.Error = ex.Message;
+                return View();
+            }
         }
 
         public IActionResult AdminBiletDelete(int id)

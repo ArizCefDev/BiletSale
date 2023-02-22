@@ -26,6 +26,7 @@
                                     <div class="form-group ">
                                         <label for="firstname" class="control-label col-lg-3">Təyinat</label>
                                         <div class="col-lg-6">
+                                            <span style="color: red" asp-validation-for="Name"></span>
                                             <input asp-for="Name" class=" form-control" id="firstname" type="text">
                                         </div>
                                     </div>
@@ -56,6 +57,7 @@
                                     <div class="form-group ">
                                         <label for="username" class="control-label col-lg-3">Məsafə</label>
                                         <div class="col-lg-6">
+                                            <span style="color: red" asp-validation-for="Km"></span>
                                             <input asp-for="Km" class="form-control " id="username" type="text">
                                         </div>
                                     </div>
