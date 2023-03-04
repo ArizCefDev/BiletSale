@@ -67,7 +67,7 @@ namespace Business
             return res;
         }
 
-        public IEnumerable<BiletDTO> GetFilter(out int prodCount, int page = 1, int pageSize = 2, ProductSortOrder order = ProductSortOrder.NameAsc, string search = null)
+        public IEnumerable<BiletDTO> GetFilter(out int prodCount, int page = 4, int pageSize = 2, ProductSortOrder order = ProductSortOrder.NameAsc, string search = null)
         {
             var res = Get();
             prodCount = res.Count();

@@ -24,23 +24,6 @@
                 </h3>
                 <p>Toplam sifarış edilən bilet sayı: @ViewBag.CartCount</p>
             </div>
-            @{
-                int cartall = ViewBag.CartCount;
-
-                if (cartall>0)
-                {
-                    <form method="post" asp-controller="Home" asp-action="AllBuy">
-                        @*<input type="hidden" value="@item.Sum" name="Sum">
-                <input type="hidden" value="@item.Id" name="CartId">*@
-                        <button type="submit" style="width:300px;" class="btn btn-outline-success">
-                            <i class="fa fa-shopping-cart" aria-hidden="true"></i>
-                            Hamısını Al
-                        </button>
-                    </form>
-                    <br />
-                }
-            }
-           
             <div class="row about-about">
                 @foreach (var item in Model)
                 {
